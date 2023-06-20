@@ -1,12 +1,24 @@
 "use client";
-import Image from "next/image";
-// import bulma
-import "bulma/css/bulma.min.css";
-import Typed from "typed.js";
 import { useEffect } from "react";
-import { FaEnvelope, FaInstagram, FaTwitter } from "react-icons/fa";
+import Image from "next/image";
 import Link from "next/link";
+
+import Typed from "typed.js";
+
+import {
+  FaEnvelope,
+  FaGithub,
+  FaGlobe,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
+
 import logo from "@/public/bbblogo.svg";
+
+import Section from "@/components/section";
+import Card from "@/components/card";
+import Button from "@/components/button";
+import SocialIcon from "@/components/socialicon";
 
 export default function Home() {
   useEffect(() => {
@@ -25,303 +37,135 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="">
-      <section className="tw-h-screen tw-flex tw-flex-col">
-        <div className="hero-head">
-          <nav className="navbar">
-            <div className="container">
-              <div className="navbar-brand">
-                <a href="/" className="navbar-item">
-                  {/* <img src="/images/logo2.2.svg" /> */}
-                  <Image src={logo} height={200} alt="Bit by Byte Logo" />
-                </a>
-
-                <a
-                  role="button"
-                  className="navbar-burger"
-                  aria-label="menu"
-                  aria-expanded="false"
-                  data-target="navMenu"
-                >
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                </a>
-              </div>
-              <div className="navbar-menu" id="navMenu">
-                <div className="navbar-end">
-                  <a href="/" className="navbar-item">
-                    Home
-                  </a>
-                  <div className="navbar-item">
-                    <a href="#classes" className="button is-rounded is-danger">
-                      Classes
-                    </a>
-                  </div>
-                </div>
-              </div>
+    <main className="flex flex-col">
+      <section className="bg-gray-100">
+        <div className="h-screen flex flex-col container mx-auto">
+          <nav className="flex p-5 justify-between">
+            <Image src={logo} alt="logo" height={50} />
+            <div className="flex items-center gap-5">
+              <Link href="/" className="text-gray-500 hover:text-gray-900">
+                Home
+              </Link>
+              <Button href="/#initiatives">Join Us</Button>
             </div>
           </nav>
-        </div>
-        <div className="tw-flex-grow tw-flex tw-flex-col tw-justify-center">
-          <div className="tw-container tw-text-center tw-mx-auto ">
-            <div className="typed-phrases">
-              <p>Welcome to Coding!</p>
+          <div className="flex flex-col items-center justify-center flex-1 gap-3">
+            <div className="typed-phrases hidden">
               <p>
-                Welcome to{" "}
-                <span className="tw-bg-gradient-to-r tw-from-orange-400 tw-to-red-500 tw-text-transparent tw-bg-clip-text">
-                  Bit by Byte!
-                </span>
+                Welcome to <br className="lg:hidden" />
+                Coding!
+              </p>
+              <p>
+                Welcome to <br className="lg:hidden" />
+                <span className="orange">Bit by Byte!</span>
               </p>
             </div>
-            <div className="tw-text-[6vw] tw-mb-6 tw-font-bold">
-              <div className="typed is-inline"></div>
-            </div>
-            <h1 className="subtitle">
-              Get ready for the start of your programming adventure!
+            <h1 className="text-[10vw] lg:text-[6vw] text-center font-bold">
+              <div className="typed inline"></div>
             </h1>
+            <p className="text-center text-gray-500">
+              Get ready for the start of your programming adventure!
+            </p>
+            <div className="flex flex-row gap-2 font-bold">
+              <Button href="/#initiatives">Join Us</Button>
+              <Button href="https://bank.hackclub.com/donations/start/bit-by-byte">
+                Donate
+              </Button>
+            </div>
+          </div>
+          <div className="flex justify-center gap-5 pb-10">
+            <SocialIcon
+              href="https://www.instagram.com/bit.by.byte/"
+              icon={FaInstagram}
+            />
+            <SocialIcon
+              href="https://twitter.com/bitbybyteinc"
+              icon={FaTwitter}
+            />
+            <SocialIcon href="mailto:ayush@bitbybyte.org" icon={FaEnvelope} />
           </div>
         </div>
-        <Socials />
       </section>
-      <main>
-        <div className="section" id="initiatives">
-          <div className="content is-medium">
-            <h1>Initiatives</h1>
-            <p>Check out what we're planning!</p>
-          </div>
-          <div className="columns">
-            <div className="column">
-              <div className="card">
-                <div className="card-header">
-                  <div className="card-header-title">queen_city_hacks</div>
-                </div>
-                <div className="card-content">
-                  <div className="content">
-                    <p>
-                      <a href="https://www.queencityhacks.com">
-                        Queen City Hacks
-                      </a>
-                      is a 12-hour, in-person, high-school hackathon that
-                      celebrates the creativity and innovation of Charlotte’s
-                      high school students.
-                    </p>
-                    <p>
-                      We plan to host the{" "}
-                      <strong>biggest high school hackathon</strong> in the
-                      Greater Charlotte Area.
-                    </p>
-                  </div>
-                </div>
-                <div className="card-footer">
-                  <div className="card-footer-item has-text-grey">
-                    Percent Completed
-                    <progress className="progress" value="60" max="100">
-                      60%
-                    </progress>
-                  </div>
-                </div>
+      <Section title="Initiatives" id="initiatives">
+        <p className="text-gray-500 text-xl">
+          Check out what we&apos;re working on!
+        </p>
+        <div className="flex gap-5 flex-col lg:flex-row">
+          <Card title="queen_city_hacks">
+            <div className="p-5 text-gray-500">
+              <p>
+                Queen City Hacks is a 12-hour, in-person, high-school hackathon
+                that celebrates the creativity and innovation of Charlotte’s
+                high school students.
+              </p>
+              <br />
+              We plan to host the <strong>
+                biggest high school hackathon
+              </strong>{" "}
+              in the Greater Charlotte Area.
+            </div>
+            <div className="flex justify-between p-5">
+              <Button href="https://www.queencityhacks.com/">Learn More</Button>
+              <div className="flex gap-5">
+                <SocialIcon
+                  href="https://www.queencityhacks.com/"
+                  icon={FaGlobe}
+                />
+                <SocialIcon
+                  href="https://www.github.com/queen-city-hacks"
+                  icon={FaGithub}
+                />
               </div>
             </div>
-            <div className="column">
-              <div className="card">
-                <div className="card-header">
-                  <div className="card-header-title">Coming Soon</div>
-                </div>
-                <div className="card-content">
-                  <div className="content">...</div>
-                </div>
-              </div>
+          </Card>
+          <Card title="QCH year two">
+            <div className="p-5 text-gray-500">
+              <p>Queen City Hacks will be returning! More info coming soon.</p>
             </div>
-            <div className="column">
-              <div className="card">
-                <div className="card-header">
-                  <div className="card-header-title">Coming Soon</div>
-                </div>
-                <div className="card-content">
-                  <div className="content">...</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </Card>
+          <Card title="Coming soon">
+            <div className="p-5 text-gray-500">...</div>
+          </Card>
         </div>
-        <div className="section" id="classes">
-          <div className="content is-medium">
-            <h1>Upcoming Classes</h1>
-            <p>See what we have in store!</p>
-          </div>
-          <div className="columns">
-            <div className="column">
-              <div className="card">
-                <div className="card-header">
-                  <div className="card-header-title">
-                    Make a Game with Scratch!
-                  </div>
-                </div>
-                <div className="card-content">
-                  <div className="content">
-                    <p>
-                      <a href="https://scratch.mit.edu/">Scratch</a> is a basic
-                      block-based programming langange. In this class, we will
-                      learn the basics of Scratch by programming our own game!
-                    </p>
-                    <p>
-                      This course is <strong>highly recommended</strong> to take
-                      first if you are new to programming.
-                    </p>
-                  </div>
-                </div>
-                <div className="card-footer">
-                  <div className="card-footer-item has-text-grey">
-                    Curriculum in Development
-                    <progress className="progress" value="20" max="100">
-                      20%
-                    </progress>
-                  </div>
-                </div>
-              </div>
+      </Section>
+      <Section title="Upcoming Classes" id="classes">
+        <p className="text-gray-500 text-xl">See what we have in store!</p>
+        <div className="flex gap-5 flex-col lg:flex-row">
+          <Card title="Make a Game with Scratch">
+            <div className="p-5 text-gray-500">
+              <p>
+                Learn the basics of Scratch, a block-based programming language
+                developed by MIT. You&apos;ll learn how to make a game from
+                scratch (pun intended)!
+              </p>
+              <br />
+              <p>
+                This class is for beginners. No prior experience is required.
+                This course is <strong>highly recommended</strong> to take first
+                if you are new to programming.
+              </p>
             </div>
-            <div className="column">
-              <div className="card">
-                <div className="card-header">
-                  <div className="card-header-title">Python Programming</div>
-                </div>
-                <div className="card-content">
-                  <div className="content">
-                    <p>
-                      <a href="https://www.python.org/">Python</a> is a popular
-                      programming language used in many applications. In this
-                      class, we will learn the basics of Python by programming
-                      our own game!
-                    </p>
-                    <p>
-                      If you do not have prior experience with programming, we
-                      recommend taking Make a Game with Scratch first.
-                    </p>
-                  </div>
-                </div>
-                <div className="card-footer">
-                  <div className="card-footer-item has-text-grey">
-                    Curriculum in Development
-                    <progress className="progress" value="65" max="100">
-                      65%
-                    </progress>
-                  </div>
-                </div>
-              </div>
+            <div className="text-center p-5">Curriculum in development</div>
+          </Card>
+          <Card title="Python for Beginners">
+            <div className="p-5 text-gray-500">
+              <p>
+                Learn the basics of Python, a popular programming language used
+                by companies like Google and Facebook.
+              </p>
+              <br />
+              <p>
+                If you do not have prior experience with programming, we
+                recommend taking Make a Game with Scratch first.
+              </p>
             </div>
-            <div className="column">
-              <div className="card">
-                <div className="card-header">
-                  <div className="card-header-title">Coming Soon</div>
-                </div>
-                <div className="card-content">
-                  <div className="content">...</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            <div className="text-center p-5">Curriculum in development</div>
+          </Card>
+          <Card title="Coming soon">
+            <div className="p-5 text-gray-500">...</div>
+          </Card>
         </div>
-      </main>
-      <footer className="footer">
-        <div className="content has-text-centered">
-          <p>
-            <strong>Bit by Byte</strong> is a NC Nonprofit Organization.
-            <br />
-            Copyright © 2021 Bit by Byte under the
-            <a href="https://raw.githubusercontent.com/bit-by-byte/bit-by-byte.github.io/master/LICENSE">
-              MIT License.
-            </a>
-          </p>
-        </div>
-      </footer>
+      </Section>
     </main>
-  );
-}
-
-function Header() {
-  return (
-    <div className="hero-head">
-      <nav className="navbar">
-        <div className="container">
-          <div className="navbar-brand">
-            <a href="/" className="navbar-item">
-              {/* <img src="/images/logo2.2.svg" /> */}
-              <Image src={logo} height={200} alt="Bit by Byte Logo" />
-            </a>
-
-            <a
-              role="button"
-              className="navbar-burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navMenu"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-          <div className="navbar-menu" id="navMenu">
-            <div className="navbar-end">
-              <a href="/" className="navbar-item">
-                Home
-              </a>
-              <div className="navbar-item">
-                <a href="#classes" className="button is-rounded is-danger">
-                  Classes
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  );
-}
-
-function Hero() {
-  return (
-    <div className="flex-grow">
-      <div className="container has-text-centered">
-        <div className="typed-phrases">
-          <p>Welcome to Coding!</p>
-          <p>
-            Welcome to <span className="orange">Bit by Byte!</span>
-          </p>
-        </div>
-        <div className="title mb-6">
-          <div className="typed is-inline"></div>
-        </div>
-        <h1 className="subtitle">
-          Get ready for the start of your programming adventure!
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-function Socials() {
-  return (
-    <div className="hero-foot">
-      <div className="social-bar columns has-text-centered mb-6">
-        <div className="column"></div>
-        <div className="column narrow orange !tw-flex tw-flex-row tw-justify-center tw-text-xl">
-          <Link href="https://www.instagram.com/bit.by.byte/">
-            {/* <i className="fab fa-instagram" aria-hidden="true"></i> */}
-            <FaInstagram />
-          </Link>
-          <Link href="https://twitter.com/bitbybyteinc">
-            {/* <i className="fab fa-twitter" aria-hidden="true"></i> */}
-            <FaTwitter />
-          </Link>
-          <Link href="mailto:ayush@bitbybyte.org">
-            {/* <i className="far fa-envelope" aria-hidden="true"></i> */}
-            <FaEnvelope />
-          </Link>
-        </div>
-        <div className="column"></div>
-      </div>
-    </div>
   );
 }

@@ -14,6 +14,6 @@ module.exports = {
       },
     },
   },
-  prefix: "tw-", // TODO: remove this once bulma is eradicated
+  // prefix: "tw-", // TODO: remove this once bulma is eradicated
   plugins: [],
 };
