@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+$main-gradient: linear-gradient(
+  90deg,
+  rgba(255, 184, 0, 1) 0%,
+  rgba(241, 62, 40, 1) 80%,
+  rgba(255, 0, 0, 1) 100%
+);
+
+$alt-gradient: linear-gradient(
+  90deg,
+  rgba(255, 0, 0, 1) 0%,
+  rgba(241, 62, 40, 1) 20%,
+  rgba(255, 184, 0, 1) 100%
+);
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar-brand img {
+  max-height: none;
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.hero-body .title {
+  font-size: 6vw;
+}
+
+header {
+  background-color: #fafafa;
+}
+
+.orange {
+  background: rgb(255, 28, 0);
+  background: $main-gradient;
+  background-clip: text;
+  color: transparent;
+}
